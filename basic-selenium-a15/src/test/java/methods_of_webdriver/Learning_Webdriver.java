@@ -34,27 +34,36 @@ public class Learning_Webdriver {
 
 		int w = driver.manage().window().getSize().getWidth();
 		int h = dim.getHeight();
-		
+
 		System.out.println(w + " and " + h);
-		
+
 		Point pt = driver.manage().window().getPosition();
 		System.out.println(pt); // => (x , y)
 
 		int x = driver.manage().window().getPosition().getX();
 		int y = pt.getY();
-		
+
 		System.out.println(x + " and " + y);
-		
+
+//		set size and position
+
+		driver.manage().window().setSize(new Dimension(500, 500));
+
+		driver.manage().window().setPosition(new Point(100, 100));
+
 //		driver.navigate();
 
+		
 //		Window Handling
 //		driver.getWindowHandle();
 //		driver.getWindowHandles();
 //		driver.switchTo();
-		
+
 //		driver.close(); // it will close current window
 		// it will not stop the server
 
+		Thread.sleep(5000);
+		
 		driver.quit(); // it will close all the wins
 		// it will stop the server
 	}
