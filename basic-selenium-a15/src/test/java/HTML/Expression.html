@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced CSS & XPath Practice Ground</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f9f9f9; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1, h2 { color: #333; border-bottom: 2px solid #ddd; padding-bottom: 5px; }
+        .exercise-block { background: #f1f8ff; border-left: 4px solid #0366d6; padding: 15px; margin-bottom: 20px; }
+        label { font-weight: bold; display: block; margin-bottom: 5px; color: #555; }
+        input[type="text"], input[type="email"] { width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box; }
+        button { padding: 8px 15px; background: #2ea44f; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        .grid-table { width: 100%; border-collapse: collapse; margin-top: 10px; background: white; }
+        .grid-table th, .grid-table td { border: 1px solid #d0d7de; padding: 10px; text-align: left; }
+        .grid-table th { background: #f6f8fa; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Locator Training: CSS & XPath</h1>
+
+    <h2>Part 1: CSS Selectors</h2>
+    
+    <div class="exercise-block">
+        <label>1. CSS by ID (#id)</label>
+        <input type="text" id="employee-id-input" placeholder="Find me using my ID">
+
+        <label style="margin-top: 15px;">2. CSS by Class (.class)</label>
+        <button class="verify-status-btn">Verify Status</button>
+
+        <label style="margin-top: 15px;">3. CSS by Parent > Child</label>
+        <div class="parent-wrapper" style="border: 1px solid #ccc; padding: 10px; background: #fff;">
+            <p class="target-child">Target me! (I am a direct child of .parent-wrapper)</p>
+            <div class="inner-wrapper">
+                <p class="target-child">Do NOT target me (I share the class, but I am a grandchild, not a direct child)</p>
+            </div>
+        </div>
+
+        <label style="margin-top: 15px;">4. CSS by Attribute (tagName[an='av'])</label>
+        <input type="text" data-role="admin-access" placeholder="Find me using the data-role attribute">
+    </div>
+
+    <h2>Part 2: XPath Strategies</h2>
+
+    <div class="exercise-block">
+        <label>1 & 2. Absolute vs Relative XPath</label>
+        <div>
+            <p>Practice writing an absolute path starting from <code>/html/body/...</code> to reach this exact paragraph, then rewrite it as a relative <code>//p[...]</code> path.</p>
+        </div>
+
+        <label style="margin-top: 15px;">3. XPath by Attribute</label>
+        <input type="text" aria-label="search-query" placeholder="Find me using //tagName[@attributeName='value']">
+
+        <label style="margin-top: 15px;">4. XPath by Exact Text</label>
+        <button>Generate Report</button>
+
+        <label style="margin-top: 15px;">5. XPath by Multiple Attributes</label>
+        <input type="email" name="contact_email" class="form-input" required placeholder="Find me using @name AND @required">
+
+        <label style="margin-top: 15px;">6. XPath by Contains Method</label>
+        <button class="btn-submit-987654">Submit Order 2026</button>
+        <p style="font-size: 0.9em; color: #666;">*Practice finding the button above using <code>contains(text(), 'Submit')</code> and <code>contains(@class, 'btn-submit')</code>.</p>
+        
+        <label style="margin-top: 15px;">7. XPath by Axes (Siblings, Ancestors, Descendants)</label>
+        <p>Use the table below to practice traversing the DOM using a known "independent" element to find a "dependent" element.</p>
+        
+        <table class="grid-table" id="users-grid">
+            <thead>
+                <tr>
+                    <th>Select</th>
+                    <th>Username</th>
+                    <th>Role</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                    	<input type="checkbox" name="user_check">
+                    </td>
+                    <td>Alice_Admin</td> 
+                    <td>Administrator</td>
+                    <td>
+                    	<button class="edit-btn">Edit</button>
+                      </td>
+                </tr>
+                <tr>
+                    <td>
+                    	<input type="checkbox" name="user_check">
+                    </td>
+                    <td>Bob_User</td> 
+                    <td>Standard User</td>
+                    <td>
+                    	<button class="edit-btn">Edit</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div style="margin-top: 10px; font-size: 0.9em; background: #eef; padding: 10px; border-radius: 4px;">
+            <strong>Axes Practice Tasks:</strong>
+            <ul style="margin: 5px 0; padding-left: 20px;">
+                <li><strong>Preceding-sibling:</strong> Find the exact checkbox belonging to "Bob_User".</li>
+                <li><strong>Following-sibling:</strong> Find the Role text belonging to "Alice_Admin".</li>
+                <li><strong>Parent/Descendant:</strong> Find the "Edit" button specifically in the row containing "Bob_User" (Traverse UP to the row parent, then DOWN to the button descendant).</li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
